@@ -1,0 +1,43 @@
+body {
+    font-size: 120%;
+    text-align: center;
+    background-color: rgb(17, 75, 52);
+    color: white;
+    max-width:100%;
+}
+
+p {
+    border: 3px white dashed;
+}
+
+
+button {
+    background-color: rgb(22, 197, 183);
+    color: White;
+    font-size: x-large;
+}
+/* Hiding Pieces on Form */
+#red1,#GHmid, #Green1, #GhanaInfo,
+#IsraelTop, #IsraelMid, #IsraelBottom, #IsraelInfo,
+#USATop, #USAMid, #USABottom, #USAInfo,
+#SpainTop, #SpainMid, #SpainBottom, #SpainInfo,
+#KenyaTop, #KenyaMid, #KenyaBottom, #KenyaInfo,
+#IndiaTop, #IndiaMid, #IndiaBottom, #IndiaInfo,
+#VenezTop, #VenezMid, #VenezInfo,
+#EcuadorTop, #EcuadorMid, #EcuadorBott, #EcudadorInfo,
+#ChinaTop, #ChinaMid, #ChinaBott, #ChinaInfo,
+#AntBarbTop, #AntBarbMid, #AntBarbBott, #AntBarbInfo,
+#UgandaTop,#UgandaMid,#UgandaBott, #UgandaInfo,
+#SouthAfrTop, #SouthAFrMid, #SouthAfrBott, #SouthAfrInfo, #orgTop, #orgMid, #orgBott{
+    display: none;
+}
+/* Why wasn't I doing this before, Instead of doing each on a new line, separate them by commas*/
+
+#_top, #_middle, #_bottom{
+    max-width: 100%;
+}
+.hide {
+    visibility: hidden;
+    /* Worry about hiding this later, might want to give Play button variable ShowUP*/
+}
+

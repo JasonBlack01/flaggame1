@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flag Game</title>
+    <link  rel = "stylesheet" href = "css/flaggame.css">
+    
+</head>
+<body>
+    <!-- Flag Game
+    - a game which you use 3 buttons to try to make the correct image of a flag for a country
+    - if you think you have the right answer, check it and you get a popup that tells you if you got it right or not
+
+    - extras: add background music, add background color, timer?
+            - easy mode: where the only the correct pieces are randomized
+            - hard mode: where every flag piece is randomized
+            - hint option
+            - also have a different playing option where you can drag and drop
+            - put a brief history of the country and significance of the flag
+
+
+    -->
+  
+
+    <audio controls autoplay style="display: inline-block;">
+        <source src="https://drive.google.com/uc?export=view&id=11iiR8ZZg2uNL_G-S-qo7iovSbKSrewnz" type="audio/ogg">
+        <source src="https://drive.google.com/uc?export=view&id=11iiR8ZZg2uNL_G-S-qo7iovSbKSrewnz" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio> 
+    
+    <br />
+    <br />   
+     
+    <button onclick= "Back()" id= "back" class= "hide"> Back </button>
+    <button onclick="Play_Next()" id="next"> START GAME </button>
+    <button onclick="check()" class="hide">Check </button>
+    <br/><br/>
+
+
+    <p id="Answer" style="visibility: hidden"> </p>
+
+    <h2 id="QNumber" class="hide"> </h2>
+
+    <div>
+    <img id="_top" src="https://drive.google.com/uc?export=view&id=1Fg9SAlmVj6R8bDtDRR_CLhhPfPL-9y-J" class="hide" onclick="randomerTop()">
+    <br/>
+    <img id="_middle" src="https://drive.google.com/uc?export=view&id=1myo7dhZwZGv2qUmSHG8SsjcAg6uUHL6s" class="hide" onclick="randomerMid()">
+    <br />
+    <img id="_bottom" src="https://drive.google.com/uc?export=view&id=1p7oS_TLG2FKtdIaZmGcYbeiZ1UwgFBO8" class="hide" onclick="randomerBottom()">
+    </div>
+    
+
+
+
+    <p id="info" class="hide">
+        Information about the Country:
+        <br />Hints:
+
+    </p>
+
+
+
+<!---- maybe if I change the png images to jpeg, they would run on iphone, 
+and I need to know how to let the pictures adapt to smaller screen-->
+
+    <!--Hidden Images/Elements-->
+
+    <!--Originals-->
+    <img id="orgTop" src="https://drive.google.com/uc?export=view&id=1Fg9SAlmVj6R8bDtDRR_CLhhPfPL-9y-J" display="none" >
+    <img id="orgMid" src="https://drive.google.com/uc?export=view&id=1myo7dhZwZGv2qUmSHG8SsjcAg6uUHL6s" display="none" >
+    <img id="orgBott" src="https://drive.google.com/uc?export=view&id=1p7oS_TLG2FKtdIaZmGcYbeiZ1UwgFBO8" display="none" >
+    
+    <!--Ghana-->
+    <img src="https://drive.google.com/uc?export=view&id=16HRRg7OfENhIiJDY6Dam5ZJNaxMIAWiT" id="red1" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=1zqmzCVMyYFClM2wkhvo8pIcVOWTlvKrY" id="GHmid" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=1JPo68bB-LZA90ZXB0Aqn29gc3f4JuHfI" id="Green1" display="none">
+
+    <p id="GhanaInfo" display="none">
+        Information about Country: Ghana is in Africa
+        Hint: Ghana's flag has a black Star
+    </p>
+    <!--Israel-->
+    <img src="https://drive.google.com/uc?export=view&id=1wp9Ei0IjtR_UaQFgU1pY5zkDeVlOy7lO" id="IsraelTop" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=14Yr7EUk9PvwF77P9OjcicldKoNkpYLDz" id="IsraelMid" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=1Qdem4_MbNcLpvs2IKceE7Eetg59itFrH" id="IsraelBottom" display="none">
+
+    <p id="IsraelInfo" display="none">
+        Information about Country:
+        Hint: Israel has a blue Star
+    </p>
+    <!--US-->
+    <img src="https://drive.google.com/uc?export=view&id=1apwMJR5yIQ8YrCeXpfc0lK-xH_Mx29g8" id="USATop" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=1tvS4dw5eMI82zYxgevqvxxCnYHp10KeZ" id="USAMid" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=1FbhmD-eTCPja9qm-c3uJk4VbL3fdNkaR" id="USABottom" display="none">
+    <p id="USAInfo" display="none">
+        Information about Country:
+        Hint:
+    </p>
+
+    <!--Spain-->
+    <img src="https://drive.google.com/uc?export=view&id=1fY4tJrFpBS-FJ1q9vwi2rKqIwheWsCq8" id="SpainTop" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=1UjwRcSr8P3oLAdsrFsBc6fgj3cT9Dp3n" id="SpainMid" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=1HURdGx8Cx7XX7U7K6q4G4iIS_AwldlCe" id="SpainBottom" display="none">
+
+    <p id="SpainInfo" display="none">
+        Information about Country:
+        Hint:
+    </p>
+    <!--Kenya-->
+
+    <img src="https://drive.google.com/uc?export=view&id=1vgBJ7XQBBolR5kpm7hqzENf4_QAWsJYe" id="KenyaTop" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=1ZJW1UlzX5UvlpKcz1yzKQDfDqWckM5eb" id="KenyaMid" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=1c0JMqzjCOXeP-68sCyPZksaFF2ZGjDl4" id="KenyaBottom" display="none">
+
+    <p id="KenyaInfo" display="none">
+        Information about Country:
+        Hint:
+    </p>
+
+    <!--India-->
+    <img src="https://drive.google.com/uc?export=view&id=1D3bGl70CoaVib2cv0eU4nnurBrgM-DTk" id="IndiaTop" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=1mkBjGklndk-_1ZE6P_Nhpcc0k1PMV6Ir" id="IndiaMid" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=1XHBL6Qz8XGFkx-ieQg3nFQFrTLTCst0S" id="IndiaBottom" display="none">
+    <!--Even though this is the same as Ghana Green1 bottom, I never put bottoms for other countries in the randomgen for bottom piece-->
+    <p id="IndiaInfo" display="none">
+        Information about Country:
+        Hint:
+    </p>
+
+    <!--Venezuela-->
+    <img src="https://drive.google.com/uc?export=view&id=1r-zEzccuOn7CkEDMqUL6zjwFUjXU4PQ9" id="VenezTop" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=1uynGDmEFk6QM4rlOa8nHzB6yoqyj8nD0" id="VenezMid" display="none">
+    <!--I'm going to use red1 for the z of switch case for venezuela
+    even the slightest space in the naming of an id can have a difference-->
+
+    <p id="VenezInfo" display="none">
+        Information about Country:
+        Hint:
+    </p>
+    
+    <!--Ecuador-->
+
+    <img src="https://drive.google.com/uc?export=view&id=1-ffEbzCojDj_oIcX5VugPOarHe_m4E7v" id="EcuadorTop" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=1-l1fvdn8jf2sO8vHfjCg-MHyclKjFbQx" id="EcuadorMid" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=1-lAc4m5XNVkjWIjJb3OXMsXrKzWZx6Ue" id="EcuadorBott" display="none">
+
+        <!---Remember to go to Css and hid the new ids--->
+        <!---Then I have to go to my javascript
+        and add a new number to assign it to Ecuador for all my functions -->
+    <p id="EcudadorInfo" display="none">
+        Information about Country:
+        Hint:
+    </p>
+    
+    <!--China-->
+
+    <img src="https://drive.google.com/uc?export=view&id=1-lGI1rV-zBIJ8Y9_jq0yWY6pWfuFc06s" id="ChinaTop" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=106vNt24torDohu-HJ91DP8GSV0CUImfF" id="ChinaMid" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=1080d6JB-0SrowuKS6FlGCTAQHlq8j7ab" id="ChinaBott" display="none">
+
+        <!---Remember to go to Css and hid the new ids--->
+        <!---Then I have to go to my javascript
+        and add a new number to assign it to China for all my functions -->
+    <p id="ChinaInfo" display="none">
+        Information about Country:It's a country in Asia <br/>
+        Hint: The China Flag Has A Big Yellow Star on Top
+    </p>
+    
+    <!--AntBarb-->
+
+    <img src="https://drive.google.com/uc?export=view&id=10LzFTtBqQsjRqqF1ndaRcsSZD12A5Tv9" id="AntBarbTop" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=10QLyDXo6krXbNsPU2FIGkcVtMB-arbFL" id="AntBarbMid" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=10airg1E32nLO53cW247U7bAqS35KfMw6" id="AntBarbBott" display="none">
+
+        <!---Remember to go to Css and hid the new ids--->
+        <!---Then I have to go to my javascript
+        and add a new number to assign it to China for all my functions -->
+    <p id="AntBarbInfo" display="none">
+        Information about Country:
+        Hint:
+    </p>
+    
+    <!--Uganda-->
+
+    <img src="https://drive.google.com/uc?export=view&id=10dN5u7EtJwwkT0FaIk0h9TbWwt5pUvG9" id="UgandaTop" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=10fzjYT2iQKa_ZD3Pgy1ThBB8_gL8OJXp" id="UgandaMid" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=10mmZcR8BXVo9nvuGSShtbAjmjFtEugD-" id="UgandaBott" display="none">
+
+        <!---Remember to go to Css and hid the new ids--->
+        <!---Then I have to go to my javascript
+        and add a new number to assign it to China for all my functions -->
+    <p id="UgandaInfo" display="none">
+        Information about Country:
+        Hint:
+    </p>
+    
+    <!--SouthAfr-->
+
+    <img src="https://drive.google.com/uc?export=view&id=10nCQxQC0RldjzapYCzgPruPIFbqWFXmN" id="SouthAfrTop" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=10wWh9tOTmIG5tCKIaKMHF8Fm9WeUM4bd" id="SouthAFrMid" display="none">
+    <img src="https://drive.google.com/uc?export=view&id=106vNt24torDohu-HJ91DP8GSV0CUImfF" id="SouthAfrBott" display="none">
+
+        <!---Remember to go to Css and hid the new ids--->
+        <!---Then I have to go to my javascript
+        and add a new number to assign it to China for all my functions -->
+    <p id="SouthAfrInfo" display="none">
+        Information about Country:
+        Hint:
+    </p>
+    
+    
+    
+
+    <script type="text/javascript" src = "js/flaggame.js">
+    
+    </script>
+</body>
+</html>
